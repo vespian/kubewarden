@@ -1,0 +1,15 @@
+apiVersion: policies.kubewarden.io/v1alpha2
+kind: ClusterAdmissionPolicy
+metadata:
+  name: pod-palidrome
+spec:
+  policyServer: palidrome-ps
+  module: https://f002.backblazeb2.com/file/ves-public/pod-palidrome.wasm
+  rules:
+  - apiGroups: [""]
+    apiVersions: ["v1"]
+    resources: ["pods"]
+    operations:
+    - CREATE
+    - UPDATE
+  mutating: false
